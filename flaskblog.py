@@ -7,11 +7,12 @@ Need to run the following in a cmd (not powershell)
 # allows for changes to be pushed to localhost without quitting the app and restarting
 set FLASK_DEBUG=1
 
-flask run uses the env vars we set, adding if __name__ cond allows script to be run in python
+- flask run uses the env vars we set, adding if __name__ cond allows script to be run in python
+- Look into flask bootstrap vs just using the bootstrap general
 '''
 
 
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 # __name__ is the name of the module
 app = Flask(__name__)
@@ -40,7 +41,7 @@ def home():
 # routes are what we type in the browser
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 if __name__ == '__main__':
     app.run(debug=True)
